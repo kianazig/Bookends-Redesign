@@ -1,0 +1,25 @@
+.label {
+	-fx-font-family: cursive;
+	-fx-font-size: 15pt;
+	-fx-font-style: italic;
+	-fx-text-fill: #b1282a;
+}
+
+#submit {
+	-fx-text-fill: #fff;
+	-fx-background-color: #007bff;
+	-fx-border-color: #007bff;
+}
+
+#twitter {
+	-fx-background-color: #fff;
+}
+
+#facebook{
+	-fx-background-color: #007bff;
+}
+
+
+.root {
+	-fx-background-color: rgb(255, 255, 255);
+}
