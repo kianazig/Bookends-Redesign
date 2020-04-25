@@ -22,9 +22,11 @@ public class NavigationBar {
     private ImageView shoppingCartIcon;
     private Image cartDefault;
     private Image cartHover;
+    private int activeLinkNumber;
     
     public NavigationBar(){
     	links = new LinkedList<>();
+    	activeLinkNumber = 0;
     
     	cartDefault = new Image("shopping-cart-default.png");
     	cartHover = new Image("shopping-cart-hover.png");    	
@@ -75,11 +77,6 @@ public class NavigationBar {
     }
     
     private void setHoverEffects() {
-    	DropShadow dropShadow = new DropShadow();
-    	dropShadow.setRadius(5.0);
-    	dropShadow.setOffsetX(3.0);
-    	dropShadow.setOffsetY(3.0);
-    	dropShadow.setColor(Color.color(0.1, 0.1, 0.1));
     	
     	Scale scaleUp = new Scale();
     	scaleUp.setX(1.1);
@@ -88,13 +85,17 @@ public class NavigationBar {
     	for(Text link : links) {
     		link.setOnMouseEntered(event->{
     		//	link.getTransforms().add(scaleUp);
-    			link.setEffect(dropShadow);
+    			setDropShadow(link);
     			navBar.setCursor(Cursor.HAND);
     		});
     		
     		link.setOnMouseExited(event->{
     			//link.getTransforms().remove(scaleUp);
-    			link.setEffect(null);
+    			
+    			if(links.indexOf(link) != activeLinkNumber) {
+    				link.setEffect(null);
+    			}
+		
     			//link.autosize();
     			navBar.setCursor(Cursor.DEFAULT);
     		}); 		
@@ -111,6 +112,12 @@ public class NavigationBar {
         	shoppingCartIcon.setFitWidth(40);
     		navBar.setCursor(Cursor.DEFAULT);
     	});
+    }
+    
+    public void resetActiveLink(int linkNumber) {
+    	links.get(activeLinkNumber).setEffect(null);
+    	activeLinkNumber = linkNumber;
+    	setDropShadow(links.get(activeLinkNumber));
     }
     
     public Text getHomeLink() {
@@ -131,6 +138,18 @@ public class NavigationBar {
     
     public StackPane getNavigationBar(){
         return navBar;
+    }
+    
+    public void setDropShadow(Text link) {
+    	
+    	DropShadow dropShadow = new DropShadow();
+    	dropShadow.setRadius(5.0);
+    	dropShadow.setOffsetX(3.0);
+    	dropShadow.setOffsetY(3.0);
+    	dropShadow.setColor(Color.color(0.1, 0.1, 0.1));
+    	
+    	link.setEffect(dropShadow);
+    	
     }
 
 }

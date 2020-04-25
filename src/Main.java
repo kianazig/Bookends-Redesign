@@ -25,6 +25,7 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         root.setTop(navBar.getNavigationBar());
         root.setCenter(home.getHomePage());
+        navBar.setDropShadow(navBar.getHomeLink());
         Scene scene = new Scene(root, 1400, 800);
         
         //NOTE: Email Pop Up should be smaller than a regular page. 
@@ -39,21 +40,25 @@ public class Main extends Application {
         navBar.getHomeLink().setOnMouseClicked(event->{
         	root.getStylesheets().remove("contactus.css");
         	root.setCenter(home.getHomePage());
+        	navBar.resetActiveLink(0);
         });
         
         navBar.getEventsLink().setOnMouseClicked(event->{
         	root.getStylesheets().remove("contactus.css");
         	root.setCenter(events.getEventsPage());
+        	navBar.resetActiveLink(1);
         });
         
         navBar.getShopLink().setOnMouseClicked(event->{
         	root.getStylesheets().remove("contactus.css");
         	root.setCenter(shop.getShopPage());
+        	navBar.resetActiveLink(2);
         });
         
         navBar.getContactLink().setOnMouseClicked(event->{
         	root.setCenter(contactUs.getContactUsPage());
         	scene.getStylesheets().add("contactus.css");
+        	navBar.resetActiveLink(3);
         });
     }
 
