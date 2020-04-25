@@ -5,6 +5,8 @@ import java.util.List;
 
 import javafx.scene.Cursor;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -17,9 +19,20 @@ public class NavigationBar {
     
     private StackPane navBar;
     private List<Text> links;
+    private ImageView shoppingCartIcon;
+    private Image cartDefault;
+    private Image cartHover;
     
     public NavigationBar(){
     	links = new LinkedList<>();
+    
+    	cartDefault = new Image("shopping-cart-default.png");
+    	cartHover = new Image("shopping-cart-hover.png");    	
+    	
+    	shoppingCartIcon = new ImageView(cartDefault);
+    	shoppingCartIcon.setFitHeight(40);	
+    	shoppingCartIcon.setFitWidth(40);
+    	
         createNavBar();
     }
     
@@ -54,9 +67,9 @@ public class NavigationBar {
     	Text contact = new Text("Contact Us");
     	contact.getStyleClass().add("nav-bar-label");
     	links.add(contact);
-    	
-    	HBox rightLinksHBox = new HBox(50, events, shop, contact);
-    	HBox linksHBox = new HBox(800, home, rightLinksHBox);
+    	    	
+    	HBox rightLinksHBox = new HBox(50, events, shop, contact, shoppingCartIcon);
+    	HBox linksHBox = new HBox(770, home, rightLinksHBox);
     	linksHBox.getStyleClass().add("nav-bar-links");
     	return linksHBox;
     }
@@ -86,6 +99,18 @@ public class NavigationBar {
     			navBar.setCursor(Cursor.DEFAULT);
     		}); 		
     	}
+    	
+    	shoppingCartIcon.setOnMouseEntered(event->{
+    		shoppingCartIcon.setImage(cartHover);
+        	shoppingCartIcon.setFitWidth(44);
+    		navBar.setCursor(Cursor.HAND);
+    	});
+    	
+    	shoppingCartIcon.setOnMouseExited(event->{
+    		shoppingCartIcon.setImage(cartDefault);
+        	shoppingCartIcon.setFitWidth(40);
+    		navBar.setCursor(Cursor.DEFAULT);
+    	});
     }
     
     public Text getHomeLink() {
