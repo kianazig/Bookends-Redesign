@@ -29,7 +29,7 @@ public class Main extends Application {
         //root.setCenter(home.getHomePage());
         //root.setCenter(events.getEventsPage());
         //root.setCenter(shop.getShopPage());
-        //root.setCenter(contactUs.getContactUsPage());
+        root.setCenter(contactUs.getContactUsPage());
         
         //NOTE: Email Pop Up should be smaller than a regular page. 
         //It will not actually be displayed using root.setCenter(), but I will
@@ -37,6 +37,7 @@ public class Main extends Application {
         //root.setCenter(emailPopUp.getEmailPopUp());
         
         Scene scene = new Scene(root, 1400, 800);
+        scene.getStylesheets().add("contactus.css");
         
         primaryStage.setTitle("Bookends");
         primaryStage.setScene(scene);

@@ -34,7 +34,7 @@ public class ContactUs {
 		TextArea textarea = new TextArea();
 		textarea.setWrapText(true);
 		
-		Image image = new Image("map.png");
+		ImageView image = new ImageView("map.png");
 		ImageView twitterImage = new ImageView("twitter.png");
 		ImageView facebookImage = new ImageView("facebook.png");
 		twitterImage.setFitHeight(50);
@@ -61,40 +61,38 @@ public class ContactUs {
 		gridpane.add(twitter, 0, 7);
 		gridpane.add(facebook, 0, 8);
 		gridpane.add(addressLabel, 1, 3);
-		gridpane.add((new ImageView(image)), 1, 4);
+		gridpane.add(image, 1, 4);
 		gridpane.setHgap(100);
 		gridpane.setVgap(10);
 		gridpane.setPadding(new Insets(0, 0, 0 , 20));
 		
-		//StackPane stackpane = new StackPane();
-		//stackpane.getChildren().add(gridpane);
-		Scene scene = new Scene(gridpane, 1400, 800);
-		scene.getStylesheets().add("contactus.css");
+		StackPane stackpane = new StackPane();
+		stackpane.getChildren().add(gridpane);
 		
 		submit.setOnMouseEntered(e -> {
-			scene.setCursor(Cursor.HAND);
+			stackpane.setCursor(Cursor.HAND);
 		});
 		
 		submit.setOnMouseExited(e -> {
-			scene.setCursor(Cursor.DEFAULT);
+			stackpane.setCursor(Cursor.DEFAULT);
 		});
 		
 		twitter.setOnMouseEntered(e -> {
-			scene.setCursor(Cursor.HAND);
+			stackpane.setCursor(Cursor.HAND);
 		});
 		
 		twitter.setOnMouseExited(e -> {
-			scene.setCursor(Cursor.DEFAULT);
+			stackpane.setCursor(Cursor.DEFAULT);
 		});
 		
 		facebook.setOnMouseEntered(e -> {
-			scene.setCursor(Cursor.HAND);
+			stackpane.setCursor(Cursor.HAND);
 		});
 		
 		facebook.setOnMouseExited(e -> {
-			scene.setCursor(Cursor.DEFAULT);
+			stackpane.setCursor(Cursor.DEFAULT);
 		});
-		return new StackPane();
+		return stackpane;
     }
     
     public StackPane getContactUsPage(){
