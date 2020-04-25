@@ -36,6 +36,7 @@ public class NavigationBar {
     	shoppingCartIcon.setFitWidth(40);
     	
         createNavBar();
+        resetActiveLink(0);
     }
     
     private void createNavBar(){
@@ -140,7 +141,7 @@ public class NavigationBar {
         return navBar;
     }
     
-    public void setDropShadow(Text link) {
+    private void setDropShadow(Text link) {
     	
     	DropShadow dropShadow = new DropShadow();
     	dropShadow.setRadius(5.0);
