@@ -20,8 +20,11 @@ public class Events {
     
     private StackPane events;
     private List<Event> eventsList;
+    private int selectedEvent;
+    private List<StackPane> eventPreviews;
     
     public Events(){
+    	selectedEvent = 0;
     	initializeEventsList();
     	createEventsPage();
     }
@@ -43,6 +46,18 @@ public class Events {
 				+ "Books will also include book plates signed by Colton!"; 
 		eventsList.add(event1);	
 		
+		Event event2 = new Event();
+		event2.title = "Remaining in Love with Chris Frantz";
+		event2.author = "Chris Frantz";
+		event2.book = "Remain in Love";
+		event2.image = new Image("event2.jpg");
+		event2.date = "Friday, May 15th";
+		event2.time = "7:00 PM";
+		event2.location = "Bookends Store";
+		event2.description = "Join us as founding member and drummer of Talking Heads band "
+				+ "and member of The Rock and Roll Hall of Fame, Chris Frants, will sign his new book: "
+				+ "Remain in Love.";
+		eventsList.add(event2);
 	}
 
 	private void createEventsPage() {
@@ -55,18 +70,37 @@ public class Events {
     }
     
     private VBox createEventList() { 	
+    	eventPreviews = new LinkedList<>();
     	VBox eventListVBox = new VBox(10);
     	eventListVBox.setPadding(new Insets(20));
     	
     	for(Event event : eventsList) {
     		StackPane preview = createEventPreview(event);
     		eventListVBox.getChildren().add(preview);
+    		addListener(preview);
+    		eventPreviews.add(preview);
     	}
     	
     	return eventListVBox;
     }
     
-    private StackPane createEventPreview(Event event) {
+    private void addListener(StackPane preview) {
+    	preview.setOnMouseClicked(event->{
+        	deselectEvent(selectedEvent);
+			selectEvent(preview);
+			selectedEvent = eventPreviews.indexOf(preview);
+		});
+	}
+
+	private void selectEvent(StackPane preview) {
+		preview.setId("selected");
+	}
+
+	private void deselectEvent(int event) {
+		eventPreviews.get(event).setId("");
+	}
+
+	private StackPane createEventPreview(Event event) {
     	
     	
    		ImageView imagePreview = new ImageView(event.image);
@@ -81,9 +115,9 @@ public class Events {
 		eventInformation.setAlignment(Pos.CENTER_LEFT);
 		
 		HBox eventPreview = new HBox(20, imagePreview, eventInformation);
-	//	eventPreview.getStyleClass().add("event-preview-box");
 		eventPreview.setPadding(new Insets(20));
-		eventPreview.setMaxWidth(350);
+		eventPreview.setMaxWidth(520);
+		eventPreview.setMinWidth(520);
 		
 		StackPane eventPreviewPane = new StackPane(eventPreview);
 		eventPreviewPane.getStyleClass().add("event-preview-box");
