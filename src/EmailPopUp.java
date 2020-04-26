@@ -18,7 +18,7 @@ public class EmailPopUp {
     }
 
     public StackPane createEmailPopUp() {
-        ImageView image = new ImageView("smallLogo.png");
+        ImageView logo = new ImageView("smallLogo.png");
 
         TextField textField = new TextField("Enter Email");
         textField.setPrefWidth(150);
@@ -38,7 +38,7 @@ public class EmailPopUp {
         StackPane pane = new StackPane(submitRec, submitLabel);
         pane.setAlignment(Pos.CENTER);
 
-        VBox vBox = new VBox(20, image, signUpLabel, textField, pane, noButton);
+        VBox vBox = new VBox(20, logo, signUpLabel, textField, pane, noButton);
         vBox.setAlignment(Pos.CENTER);
 
         StackPane stackPane = new StackPane();
