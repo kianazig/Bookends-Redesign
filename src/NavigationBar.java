@@ -12,7 +12,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Scale;
 
 
 public class NavigationBar {
@@ -78,26 +77,19 @@ public class NavigationBar {
     }
     
     private void setHoverEffects() {
-    	
-    	Scale scaleUp = new Scale();
-    	scaleUp.setX(1.1);
-    	scaleUp.setY(1.1);
     	   	
     	for(Text link : links) {
     		link.setOnMouseEntered(event->{
-    		//	link.getTransforms().add(scaleUp);
     			setDropShadow(link);
     			navBar.setCursor(Cursor.HAND);
     		});
     		
     		link.setOnMouseExited(event->{
-    			//link.getTransforms().remove(scaleUp);
     			
     			if(links.indexOf(link) != activeLinkNumber) {
     				link.setEffect(null);
     			}
 		
-    			//link.autosize();
     			navBar.setCursor(Cursor.DEFAULT);
     		}); 		
     	}

@@ -14,6 +14,7 @@ public class ContactUs {
     
     public ContactUs(){
 		contactUs = new StackPane(createContactPage());
+		contactUs.getStylesheets().add("contactus.css");
     }
     
     public StackPane createContactPage() {
