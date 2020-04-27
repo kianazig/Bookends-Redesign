@@ -21,6 +21,7 @@ public class ContactUs {
 		Label addressLabel = new Label("211 East Ridgewood Ave.  Ridgewood, NJ  07450");
 		Label questionLabel = new Label("Please write to us your questions.");
 		Label socialLabel = new Label("Follow us on our socials!");
+		Label phoneLabel = new Label("Call us: (201)445-0726");
 		
 		TextField text = new TextField("Enter your e-mail address.");
 		text.setOnMouseClicked(e -> {
@@ -57,6 +58,7 @@ public class ContactUs {
 		gridpane.add(socialLabel, 0, 6);
 		gridpane.add(twitter, 0, 7);
 		gridpane.add(facebook, 0, 7);
+		gridpane.add(phoneLabel, 1, 2);
 		gridpane.add(addressLabel, 1, 3);
 		gridpane.add(image, 1, 4);
 		gridpane.setHgap(100);
