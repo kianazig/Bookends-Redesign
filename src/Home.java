@@ -1,5 +1,6 @@
 
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -19,8 +20,8 @@ public class Home {
 
     public StackPane createHome() {
         ImageView logo = new ImageView("bigLogo.JPG");
-        logo.setFitWidth(300);
-        logo.setFitHeight(300);
+        logo.setFitWidth(600);
+        logo.setFitHeight(600);
         logo.setPreserveRatio(true);
 
         ImageView book1 = new ImageView("bookPreview1.jpg");
@@ -53,42 +54,36 @@ public class Home {
         book6.setFitHeight(200);
         book6.setPreserveRatio(true);
 
+        Label sentence = new Label(" Bookends is a legendary New Jersey Landmark!\n" +
+                " We are known for our incredible author events and have hosted well over\n" +
+                " 1,000 authors in the past 15 years!");
+        sentence.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica; -fx-font-style: italic");
 
-        Label sentence = new Label("Bookends is a legendary New Jersey Landmark!");
-        Label sentance2 = new Label("We are known for our incredible author events and have hosted well over");
-        Label sentance3 = new Label("1,000 authors in the past 15 years!");
-        sentence.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica; -fx-text-fill: #b1282a; -fx-font-style: italic");
-        sentance2.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica; -fx-text-fill: #b1282a; -fx-font-style: italic");
-        sentance3.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica; -fx-text-fill: #b1282a; -fx-font-style: italic");
-
-
-        Label notice1 = new Label("Dear Customers, ");
-        Label notice2 = new Label("Due to the COVID-19 our store is closed indefinitely but open \"Virtually\"");
-        Label notice3 = new Label("Please order all books through our online system");
-        notice1.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica; -fx-text-fill: #b1282a;");
-        notice2.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica; -fx-text-fill: #b1282a;");
-        notice3.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica; -fx-text-fill: #b1282a;");
-
+        Label notice1 = new Label("Dear Customers,\n" +
+                "Due to the COVID-19 our store is closed indefinitely but open \"Virtually\"\n" +
+                "Please order all books through our online system");
+        notice1.setStyle("-fx-font-size: 20pt; -fx-font-family: Helvetica;");
 
         HBox hBox = new HBox(20, book1, book2, book3, book4, book5, book6);
+        hBox.setAlignment(Pos.CENTER);
 
-        VBox sentanceVbox = new VBox(sentence, sentance2, sentance3);
+        VBox sentanceVbox = new VBox(sentence);
+        sentanceVbox.setAlignment(Pos.CENTER);
 
-        VBox noticeVbox = new VBox(5, notice1, notice2, notice3);
+        VBox noticeVbox = new VBox(notice1);
+        noticeVbox.setAlignment(Pos.CENTER);
 
-        VBox vBox1 = new VBox(40, hBox, sentanceVbox, noticeVbox);
+        VBox vBox1 = new VBox(35, logo, hBox, sentanceVbox, noticeVbox);
+        vBox1.setAlignment(Pos.CENTER);
 
         BorderPane borderPane = new BorderPane();
-        BorderPane.setAlignment(sentence, Pos.TOP_LEFT);
-        borderPane.setLeft(logo);
         borderPane.setCenter(vBox1);
-
+        borderPane.setPadding(new Insets(0, 400, 0, 0));
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(borderPane);
         return stackPane;
     }
-
 
     public StackPane getHomePage(){
         return home;
