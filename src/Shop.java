@@ -102,6 +102,7 @@ public class Shop {
 
         BorderPane pane = new BorderPane();
         pane.setCenter(root);
+		pane.setPadding(new Insets(0,500,0,0));
         pane.setBottom(floor);
 
         StackPane stackPane = new StackPane();
