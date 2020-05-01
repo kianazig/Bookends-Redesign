@@ -75,11 +75,10 @@ public class EmailPopUp {
     
     public void showPopUp(Stage stage) {
     	
-    	PauseTransition delay = new PauseTransition(Duration.seconds(5));
+    	PauseTransition delay = new PauseTransition(Duration.seconds(10));
         
     	delay.setOnFinished(event->{
         	emailPopUp.show(stage);
-
         });
     	delay.play();
         

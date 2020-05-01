@@ -3,6 +3,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -50,6 +51,8 @@ public class Main extends Application {
         	root.setCenter(contactUs.getContactUsPage());
         	navBar.resetActiveLink(3);
         });
+        
+        root.setAlignment(root.getCenter(), Pos.CENTER);
         
         emailPopUp.showPopUp(primaryStage);
        
