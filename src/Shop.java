@@ -92,6 +92,7 @@ public class Shop {
 
         VBox root = new VBox(search,iv1, h1, h2);
         root.setSpacing(20);
+        root.setPadding(new Insets(60));
 
         root.setAlignment(Pos.TOP_CENTER);
         root.setStyle("-fx-background-color: white;");
@@ -102,8 +103,9 @@ public class Shop {
 
         BorderPane pane = new BorderPane();
         pane.setCenter(root);
-		pane.setPadding(new Insets(0,500,0,0));
-        pane.setBottom(floor);
+		pane.setPadding(new Insets(0,425,0,0));
+        //pane.setBottom(floor);
+		pane.setStyle("-fx-background-color: white;");
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(pane);
